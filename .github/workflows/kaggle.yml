@@ -34,7 +34,7 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
     
-      - name: Login to Kagglekaggle competitions download -c titanic
+      - name: Login to Kaggle
         run: |
               echo "KAGGLE_USERNAME=${{ secrets.KAGGLE_USERNAME }}" >> $GITHUB_ENV
               echo "KAGGLE_KEY=${{ secrets.KAGGLE_KEY }}" >> $GITHUB_ENV
@@ -42,6 +42,9 @@ jobs:
       - name: Download Dataset
         run: kaggle competitions download -c titanic -p ./kaggle/input/titanic/
         
+      - name: Unziping 
+        run: !unzip ./kaggle/input/titanic/titanic.zip ./kaggle/input/titanic/
+      
       - name: Exeute Notebook
         run: jupyter-execute titanic.ipynb
         
