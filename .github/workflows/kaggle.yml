@@ -43,7 +43,7 @@ jobs:
         run: kaggle competitions download -c titanic -p ./kaggle/input/titanic/
         
       - name: Unziping 
-        run: unzip ./kaggle/input/titanic/titanic.zip
+        run: unzip ./kaggle/input/titanic/titanic.zip -d ./kaggle/input/titanic
       
       - name: Exeute Notebook
         run: jupyter-execute titanic.ipynb
